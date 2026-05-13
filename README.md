@@ -1,1 +1,1 @@
-"# lumina-dental-studio" 
+"# lumina-dental-studio"

@@ -17,9 +17,16 @@ export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       { title: "Lumina Dental Studio — Premium Private Dentistry in Islington" },
-      { name: "description", content: "Award-winning private dental care in the heart of North London. Gentle treatments, expert dentists, modern technology — book your appointment today." },
+      {
+        name: "description",
+        content:
+          "Award-winning private dental care in the heart of North London. Gentle treatments, expert dentists, modern technology — book your appointment today.",
+      },
       { property: "og:title", content: "Lumina Dental Studio — Premium Private Dentistry" },
-      { property: "og:description", content: "Gentle care, beautiful results. Private dentistry in Islington, London." },
+      {
+        property: "og:description",
+        content: "Gentle care, beautiful results. Private dentistry in Islington, London.",
+      },
       { property: "og:type", content: "website" },
     ],
   }),

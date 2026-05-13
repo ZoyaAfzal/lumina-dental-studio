@@ -1,4 +1,4 @@
-import { motion, useInView, useMotionValue, animate } from "framer-motion";
+import { motion, useInView, useMotionValue, animate, useSpring } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 
 const stats = [
@@ -10,36 +10,54 @@ const stats = [
 
 function Counter({ to, suffix }: { to: number; suffix: string }) {
   const ref = useRef<HTMLSpanElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-80px" });
+  const inView = useInView(ref, { once: true, margin: "-100px" });
   const mv = useMotionValue(0);
+  const springValue = useSpring(mv, { stiffness: 60, damping: 20 });
   const [val, setVal] = useState(0);
+
   useEffect(() => {
     if (!inView) return;
-    const controls = animate(mv, to, { duration: 1.8, ease: "easeOut", onUpdate: (v) => setVal(Math.round(v)) });
+    const controls = animate(mv, to, { duration: 2.5, ease: "easeOut" });
     return () => controls.stop();
   }, [inView, to, mv]);
+
+  useEffect(() => {
+    return springValue.on("change", (latest) => {
+      setVal(Math.round(latest));
+    });
+  }, [springValue]);
+
   return (
-    <span ref={ref} className="font-display text-5xl lg:text-6xl font-semibold tracking-tight">
-      {val.toLocaleString()}{suffix}
+    <span ref={ref} className="font-display text-5xl lg:text-7xl font-bold tracking-tighter">
+      {val.toLocaleString()}
+      {suffix}
     </span>
   );
 }
 
 export function Stats() {
   return (
-    <section className="bg-primary text-white py-16 lg:py-20">
-      <div className="container-x grid grid-cols-2 lg:grid-cols-4 gap-y-12">
+    <section className="bg-primary text-white py-24 lg:py-32 relative overflow-hidden">
+      {/* Decorative elements */}
+      <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+      <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+
+      <div className="container-x grid grid-cols-2 lg:grid-cols-4 gap-y-16 relative z-10">
         {stats.map((s, i) => (
           <motion.div
             key={s.label}
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ delay: i * 0.08 }}
-            className="text-center lg:border-r last:border-r-0 border-white/10"
+            transition={{ delay: i * 0.1, duration: 0.8 }}
+            className="text-center px-4"
           >
-            <Counter to={s.value} suffix={s.suffix} />
-            <p className="mt-3 text-xs lg:text-sm tracking-[0.22em] uppercase text-white/70">{s.label}</p>
+            <div className="mb-4 inline-block">
+              <Counter to={s.value} suffix={s.suffix} />
+            </div>
+            <p className="text-xs lg:text-sm tracking-[0.3em] uppercase text-white/50 font-bold">
+              {s.label}
+            </p>
           </motion.div>
         ))}
       </div>
