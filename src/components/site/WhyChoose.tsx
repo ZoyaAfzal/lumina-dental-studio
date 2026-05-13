@@ -1,9 +1,9 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ShieldCheck, BadgeCheck, Wallet, ArrowRight } from "lucide-react";
-import w1 from "@/assets/why-1.jpg";
+import w1 from "@/assets/doctor-1.jpg";
 import w2 from "@/assets/why-2.jpg";
 import w3 from "@/assets/why-3.jpg";
-import w4 from "@/assets/about-1.jpg";
+import w4 from "@/assets/doctor-2.jpg";
 
 const points = [
   {

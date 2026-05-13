@@ -41,7 +41,7 @@ export function Footer() {
           <div className="lg:col-span-4">
             <Logo />
             <p className="mt-5 text-white/70 max-w-sm leading-relaxed">
-              Premium private dentistry in the heart of Islington — gentle care, beautiful results.
+              Premium private dentistry in the heart of Islington, delivering gentle care and beautiful results.
             </p>
             <div className="mt-6 flex gap-3">
               {[Facebook, Instagram, Twitter, Youtube, Linkedin].map((Icon, i) => (
@@ -108,7 +108,6 @@ export function Footer() {
         </div>
 
         <div className="mt-20 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6 text-sm text-white/50">
-          <p>© {new Date().getFullYear()} Lumina Dental Studio. All rights reserved.</p>
           <p>
             Powered by{" "}
             <a
