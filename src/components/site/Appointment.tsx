@@ -146,9 +146,9 @@ export function Appointment() {
                 as="textarea"
               />
             </div>
-            <div className="sm:col-span-2 mt-4">
+            <div className="sm:col-span-2 mt-4 flex flex-col items-center">
               <Magnetic strength={0.1}>
-                <button className="w-full inline-flex items-center justify-center gap-3 rounded-full bg-primary text-white px-10 py-5 text-base font-bold shadow-2xl shadow-primary/20 hover:bg-slate-800 transition-all group">
+                <button className="inline-flex items-center justify-center gap-3 rounded-full bg-primary text-white px-10 py-5 text-base font-bold shadow-2xl shadow-primary/20 hover:bg-slate-800 transition-all group">
                   Confirm Booking Details{" "}
                   <ArrowRight className="size-5 group-hover:translate-x-1 transition-transform" />
                 </button>
